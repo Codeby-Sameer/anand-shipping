@@ -62,14 +62,15 @@ const Ship = () => {
             <motion.div variants={containerVariants}>
               <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-4 md:mb-5 px-2 sm:px-4">
                 Anand Shipping is dedicated to providing sophisticated, secure, and premium
-                logistics solutions. We strive to blend precision with personalized care, 
-                delivering services that not only meet expectations but exceed them with 
-                unmatched attention to detail.
+                logistics solutions that redefine industry standards. We combine precision 
+                engineering with personalized care to deliver services that consistently 
+                exceed expectations through unmatched attention to detail.
               </p>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed px-2 sm:px-4">
-                With a commitment to absolute privacy and white-glove service, our shipping
-                solutions ensure that every parcel—whether personal, confidential, or high-value—
+                With our commitment to absolute privacy, white glove service, and innovative 
+                delivery solutions including 15 minute express delivery in metro cities, 
+                we ensure every parcel whether personal, confidential, or high value 
                 travels with elegance and absolute protection.
               </p>
             </motion.div>
@@ -77,30 +78,29 @@ const Ship = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - Moved Closer */}
       <motion.section
         id="services"
-        className="py-16 bg-white"
+        className="py-12 bg-slate-50"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12"
             variants={containerVariants}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
               Our Premium Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Elevated shipping experience where every parcel is treated with
-              the highest level of attention and security.
+              Experience shipping redefined with our premium services designed for excellence
             </p>
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={cardsContainerVariants}
           >
             {/* Card 1 - Priority Delivery */}
@@ -115,14 +115,14 @@ const Ship = () => {
                   Priority Delivery
                 </h3>
                 <p className="text-gray-600 mb-4 text-center">
-                  Expert domestic and international delivery with guaranteed
-                  timeframes and real-time tracking for high-value shipments.
+                  Lightning fast domestic and international delivery with guaranteed
+                  timeframes including 15 minute express service in metro areas.
                 </p>
 
                 <ul className="text-gray-600 space-y-2 mb-6">
                   <li className="flex items-center gap-2">
                     <i className="fas fa-clock text-red-500"></i>
-                    <span>Express domestic & international shipping</span>
+                    <span>15 minute express metro delivery</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <i className="fas fa-shield-alt text-red-500"></i>
@@ -228,12 +228,12 @@ const Ship = () => {
 
       {/* ABOUT US STYLE SECTION */}
       <motion.section
-        className="py-20 bg-white"
+        className="py-16 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left Image */}
           <motion.div variants={containerVariants}>
             <img
@@ -244,52 +244,80 @@ const Ship = () => {
           </motion.div>
 
           {/* Right Content */}
-          <motion.div variants={containerVariants} className="space-y-6">
-            <p className="text-blue-700 font-semibold tracking-wide uppercase">
-              About Us
+          <motion.div variants={containerVariants} className="space-y-5">
+            <p className="text-blue-700 font-semibold tracking-wide uppercase text-sm">
+              Rapid Logistics
             </p>
 
             <h2 className="text-3xl md:text-4xl font-bold text-blue-800 leading-tight">
-              Quick Transport and <br /> Logistics Solutions
+              Express Transport and <br /> Logistics Solutions
             </h2>
 
-            <p className="text-gray-600 text-lg leading-relaxed max-w-xl">
+            <p className="text-gray-600 leading-relaxed max-w-xl">
               We deliver secure, premium-grade logistics with unmatched speed,
               precision, and reliability. Every shipment is handled with
               elite-level care, ensuring confidentiality, safety, and on-time
-              delivery.
+              delivery with options for 15 minute express service.
             </p>
 
             {/* Feature Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               {/* Global Coverage */}
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-globe-americas text-blue-700 text-xl"></i>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-globe-americas text-blue-700 text-lg"></i>
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-blue-800">
-                    Global Coverage
+                  <h4 className="text-base font-bold text-blue-800">
+                    Global Network
                   </h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Extensive network across key domestic and international
-                    routes, ensuring reliable coverage end-to-end.
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Extensive coverage across 67+ countries with local expertise
                   </p>
                 </div>
               </div>
 
               {/* On Time Delivery */}
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-shipping-fast text-blue-700 text-xl"></i>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-shipping-fast text-green-700 text-lg"></i>
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-blue-800">
-                    On Time Delivery
+                  <h4 className="text-base font-bold text-blue-800">
+                    Express Delivery
                   </h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Optimized routing and priority handling ensure your parcels
-                    arrive exactly when they're expected.
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    15 minute metro delivery with real-time tracking
+                  </p>
+                </div>
+              </div>
+
+              {/* Security */}
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-shield-alt text-amber-700 text-lg"></i>
+                </div>
+                <div>
+                  <h4 className="text-base font-bold text-blue-800">
+                    Advanced Security
+                  </h4>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Tamper-proof packaging and 24/7 monitoring
+                  </p>
+                </div>
+              </div>
+
+              {/* Support */}
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-headset text-purple-700 text-lg"></i>
+                </div>
+                <div>
+                  <h4 className="text-base font-bold text-blue-800">
+                    24/7 Support
+                  </h4>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Dedicated premium support for all your shipping needs
                   </p>
                 </div>
               </div>
@@ -298,9 +326,9 @@ const Ship = () => {
             {/* Button */}
             <Link
               to="/services"
-              className="inline-block mt-6 bg-blue-800 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-900 transition"
+              className="inline-block mt-4 bg-blue-800 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-900 transition font-semibold"
             >
-              Explore More
+              Explore All Services
             </Link>
           </motion.div>
         </div>
