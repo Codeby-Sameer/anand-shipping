@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaGlobeAmericas, FaShippingFast } from "react-icons/fa";
-
 
 const containerVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -41,10 +39,48 @@ const cardVariants = {
 const Ship = () => {
   return (
     <>
+      {/* Mission Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            {/* Heading Section */}
+            <motion.div variants={containerVariants} className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-4xl font-bold text-blue-800 mb-2 md:mb-3">
+                Our Mission
+              </h2>
+
+              <div className="w-20 h-1 md:w-24 md:h-1 bg-gradient-to-r from-blue-500 to-amber-500 mx-auto mb-3 md:mb-4 rounded-full"></div>
+            </motion.div>
+
+            {/* Content Section */}
+            <motion.div variants={containerVariants}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-4 md:mb-5 px-2 sm:px-4">
+                Anand Shipping is dedicated to providing sophisticated, secure, and premium
+                logistics solutions. We strive to blend precision with personalized care, 
+                delivering services that not only meet expectations but exceed them with 
+                unmatched attention to detail.
+              </p>
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed px-2 sm:px-4">
+                With a commitment to absolute privacy and white-glove service, our shipping
+                solutions ensure that every parcel—whether personal, confidential, or high-value—
+                travels with elegance and absolute protection.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <motion.section
         id="services"
-        className="py-16 bg-white font-sans"
+        className="py-16 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -54,7 +90,7 @@ const Ship = () => {
             className="text-center mb-16"
             variants={containerVariants}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-800 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
               Our Premium Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -67,78 +103,120 @@ const Ship = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={cardsContainerVariants}
           >
-            {/* Card 1 */}
+            {/* Card 1 - Priority Delivery */}
             <motion.div variants={cardVariants}>
               <div className="service-card bg-white rounded-2xl p-6 shadow-sm border border-red-200 border-t-4 border-t-red-400 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <h3 className="text-xl font-bold text-primary-800 mb-3">
+                {/* Icon */}
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <i className="fas fa-rocket text-red-600 text-2xl"></i>
+                </div>
+                
+                <h3 className="text-xl font-bold text-blue-800 mb-3 text-center">
                   Priority Delivery
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 text-center">
                   Expert domestic and international delivery with guaranteed
                   timeframes and real-time tracking for high-value shipments.
                 </p>
 
                 <ul className="text-gray-600 space-y-2 mb-6">
-                  <li>Express domestic &amp; international shipping</li>
-                  <li>Guaranteed timeframes</li>
-                  <li>Priority handling</li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-clock text-red-500"></i>
+                    <span>Express domestic & international shipping</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-shield-alt text-red-500"></i>
+                    <span>Guaranteed timeframes</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-shipping-fast text-red-500"></i>
+                    <span>Priority handling</span>
+                  </li>
                 </ul>
 
                 <Link
                   to="/services"
-                  className="text-primary-600 font-medium hover:text-accent-500 transition flex items-center"
+                  className="text-blue-600 font-medium hover:text-amber-500 transition flex items-center justify-center"
                 >
                   Learn more →
                 </Link>
               </div>
             </motion.div>
 
-            {/* Card 2 */}
+            {/* Card 2 - Elite-Grade Packaging */}
             <motion.div variants={cardVariants}>
-              <div className="service-card bg-white rounded-2xl p-6 shadow-sm border border-gray-200 border-t-4 border-t-amber-400 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <h3 className="text-xl font-bold text-primary-800 mb-3">
+              <div className="service-card bg-white rounded-2xl p-6 shadow-sm border border-amber-200 border-t-4 border-t-amber-400 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                {/* Icon */}
+                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <i className="fas fa-gem text-amber-600 text-2xl"></i>
+                </div>
+                
+                <h3 className="text-xl font-bold text-blue-800 mb-3 text-center">
                   Elite-Grade Packaging
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 text-center">
                   Premium protective packaging materials and techniques designed
                   to preserve and protect your valuable items during transit.
                 </p>
 
                 <ul className="text-gray-600 space-y-2 mb-6">
-                  <li>Premium materials</li>
-                  <li>Custom solutions</li>
-                  <li>Climate-controlled options</li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-box-open text-amber-500"></i>
+                    <span>Premium materials</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-hands-helping text-amber-500"></i>
+                    <span>Custom solutions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-snowflake text-amber-500"></i>
+                    <span>Climate-controlled options</span>
+                  </li>
                 </ul>
 
                 <Link
                   to="/services"
-                  className="text-primary-600 font-medium hover:text-accent-500 transition flex items-center"
+                  className="text-blue-600 font-medium hover:text-amber-500 transition flex items-center justify-center"
                 >
                   Learn more →
                 </Link>
               </div>
             </motion.div>
 
-            {/* Card 3 */}
+            {/* Card 3 - White-Glove Handling */}
             <motion.div variants={cardVariants}>
               <div className="service-card bg-white rounded-2xl p-6 shadow-sm border border-blue-200 border-t-4 border-t-blue-400 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <h3 className="text-xl font-bold text-primary-800 mb-3">
+                {/* Icon */}
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <i className="fas fa-hand-holding-heart text-blue-600 text-2xl"></i>
+                </div>
+                
+                <h3 className="text-xl font-bold text-blue-800 mb-3 text-center">
                   White-Glove Handling
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 text-center">
                   Specialized care for luxury, fragile, and high-value items
                   with dedicated handlers and customized transport solutions.
                 </p>
 
                 <ul className="text-gray-600 space-y-2 mb-6">
-                  <li>Luxury item specialists</li>
-                  <li>Custom transport solutions</li>
-                  <li>Temperature-controlled vehicles</li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-crown text-blue-500"></i>
+                    <span>Luxury item specialists</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-route text-blue-500"></i>
+                    <span>Custom transport solutions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <i className="fas fa-temperature-low text-blue-500"></i>
+                    <span>Temperature-controlled vehicles</span>
+                  </li>
                 </ul>
 
                 <Link
                   to="/services"
-                  className="text-primary-600 font-medium hover:text-accent-500 transition flex items-center"
+                  className="text-blue-600 font-medium hover:text-amber-500 transition flex items-center justify-center"
                 >
                   Learn more →
                 </Link>
@@ -148,9 +226,9 @@ const Ship = () => {
         </div>
       </motion.section>
 
-      {/* ABOUT US STYLE SECTION (replacing old Specialized Solutions) */}
+      {/* ABOUT US STYLE SECTION */}
       <motion.section
-        className="py-20 bg-white font-sans"
+        className="py-20 bg-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -187,7 +265,7 @@ const Ship = () => {
               {/* Global Coverage */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FaGlobeAmericas className="text-blue-700 text-2xl" />
+                  <i className="fas fa-globe-americas text-blue-700 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-blue-800">
@@ -203,7 +281,7 @@ const Ship = () => {
               {/* On Time Delivery */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FaShippingFast className="text-blue-700 text-2xl" />
+                  <i className="fas fa-shipping-fast text-blue-700 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-blue-800">
@@ -211,7 +289,7 @@ const Ship = () => {
                   </h4>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Optimized routing and priority handling ensure your parcels
-                    arrive exactly when they’re expected.
+                    arrive exactly when they're expected.
                   </p>
                 </div>
               </div>
