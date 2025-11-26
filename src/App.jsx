@@ -1,21 +1,30 @@
-
-import './App.css'
-
-import { Navbar } from './components/Navbar';
-  
-
-
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/common/Header'
+import Footer from './components/common/Footer'
+import Home from './pages/Home'
+import About from './pages/About'
+import Services from './pages/Servicespage'
+import Contact from './pages/Contact'
+import ScrollToTop from './components/common/ScrolltoTop'
 
 function App() {
-  
-
   return (
- <div>
-  <Navbar/>
-  <h1 className='text-3xl bg-red-500 w-1/4'>
-    Hello Anand Shipping!
-  </h1>
- </div>
+    <Router>
+      <ScrollToTop />
+      <div className="App">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
