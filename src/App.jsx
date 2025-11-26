@@ -7,6 +7,7 @@ import About from './pages/About'
 import Services from './pages/Servicespage'
 import Contact from './pages/Contact'
 import ScrollToTop from './components/common/ScrolltoTop'
+import TrackingPage from './pages/TrackingPage'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/tracking" element={<TrackingPage/>} />
           </Routes>
         </main>
         <Footer />
