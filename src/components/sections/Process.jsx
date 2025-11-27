@@ -132,7 +132,7 @@ const Process = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-10 md:mb-14">
             <motion.div variants={fadeUp}>
               <img
-                src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                src="/images/shipping.png"
                 alt="Anand Shipping Premium Logistics"
                 className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 md:h-96 object-cover"
               />
@@ -182,9 +182,9 @@ const Process = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="container mx-auto px-4 grid lg:grid-cols-2 max-w-7xl gap-1 items-center ">
           {/* LEFT: TEXT + CALL CARD */}
-          <motion.div className="space-y-5 md:space-y-6" variants={fadeUp}>
+          <motion.div className="space-y-5 md:space-y-6  md:ms-10 " variants={fadeUp}>
             <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-blue-600 uppercase">
               Excellence in Logistics
             </p>
@@ -236,7 +236,7 @@ const Process = () => {
             </div>
 
             {/* Call for any query */}
-            <div className="flex items-center gap-4 pt-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
+            <div className="flex items-center gap-4 pt-4 bg-white rounded-xl p-4 shadow-sm  border-gray-200">
               <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center overflow-hidden">
                 <i className="fas fa-headset text-white text-xl md:text-2xl" />
               </div>
@@ -256,7 +256,7 @@ const Process = () => {
 
           {/* RIGHT: 3 FLAT COLOURED CARDS */}
           <motion.div
-            className="grid grid-cols-2 gap-4 max-w-md ml-auto md:ml-0 lg:ml-auto"
+            className="grid grid-cols-2 gap-4  max-w-md ml-auto md:ml-0 lg:ml-auto"
             variants={staggerContainer}
           >
             {/* Premium Clients - Blue card */}
