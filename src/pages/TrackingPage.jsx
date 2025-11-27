@@ -74,7 +74,7 @@ const TrackingPage = () => {
     return (
 
         <motion.section
-            className="min-h-screen bg-blue-900 text-white pt-24 pb-16"
+            className="min-h-screen bg-blue-900 text-white pt-32 pb-16"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}

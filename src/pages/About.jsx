@@ -1,90 +1,132 @@
-import React, { useEffect } from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useRef } from 'react'
+import { motion, useInView, useAnimation } from 'framer-motion'
 
 const About = () => {
-  // Enhanced animations for About page
+  // Ref for scroll animations
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, threshold: 0.1 })
+  const mainControls = useAnimation()
+
   useEffect(() => {
-    // Enhanced fade in on scroll with staggered delays
-    const checkFadeIn = () => {
-      const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
-      fadeElements.forEach((element, index) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-       
-        if (elementTop < window.innerHeight - elementVisible) {
-          // Stagger animation delays based on index
-          setTimeout(() => {
-            element.classList.add('visible');
-          }, index * 100);
-        }
-      });
-    };
+    if (isInView) {
+      mainControls.start("visible")
+    }
+  }, [isInView, mainControls])
 
-    // Initialize animations
-    const timer = setTimeout(() => {
-      checkFadeIn();
-    }, 100);
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  }
 
-    window.addEventListener('scroll', checkFadeIn);
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  }
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', checkFadeIn);
-    };
-  }, []);
+  const slideInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  }
 
-  // Founder Profile Component with enhanced animations
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  }
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  // Founder Profile Component with framer-motion animations
   const FounderProfile = () => (
     <section className="max-w-6xl mx-auto pt-12 py-2">
-      <div className="bg-white rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 items-start">
+      <motion.div 
+        className="bg-white rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 items-start"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, threshold: 0.1 }}
+      >
         {/* Left: Image card with quote below */}
         <div className="space-y-6">
-          <div className="relative overflow-hidden slide-in-left">
+          <motion.div className="relative overflow-hidden" variants={slideInLeft}>
             <div className='flex item-end w-full justify-center'>
-              <img
+              <motion.img
                 src="./images/CEO.png"
                 alt="Founder"
-                className="w-70 h-[600px] object-cover object-top center transform hover:scale-105 transition-transform duration-700"
+                className="w-70 h-[600px] object-cover object-top center"
                 style={{ borderRadius: 12 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.7 }}
               />
             </div>
 
             {/* Small floating badge with animation */}
-            <div className="absolute bottom-4 right-4 lg:bottom-5 lg:right-20 sm:bottom-10 sm:right-20 scale-in">
-              <div className="bg-white px-4 py-3 rounded-lg shadow-lg font-semibold text-gray-700 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+            <motion.div className="absolute bottom-4 right-4 lg:bottom-5 lg:right-20 sm:bottom-10 sm:right-20" variants={scaleIn}>
+              <motion.div 
+                className="bg-white px-4 py-3 rounded-lg shadow-lg font-semibold text-gray-700 border border-gray-100"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="uppercase text-lg tracking-wide text-center text-amber-500 font-bold">ANAND</div>
                 <div className="text-xs text-gray-500 text-center">Founder & CEO</div>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
           {/* Quote below image */}
-          <blockquote className="border-l-4 border-amber-500 pl-4 italic text-gray-700 bg-amber-50 rounded-lg p-4 text-base slide-in-left">
+          <motion.blockquote 
+            className="border-l-4 border-amber-500 pl-4 italic text-gray-700 bg-amber-50 rounded-lg p-4 text-base"
+            variants={slideInLeft}
+          >
             "We don't just ship packages; we deliver trust. Every parcel handled is a promise kept, every delivery made is a commitment to precision and care."
-          </blockquote>
+          </motion.blockquote>
         </div>
 
         {/* Right: Content */}
-        <div className="pt-6 slide-in-right">
+        <motion.div className="pt-6" variants={slideInRight}>
           <h2 className="text-3xl font-bold text-slate-800 mb-2">Anand</h2>
           <p className="text-sm text-blue-700 font-medium">Founder & CEO</p>
 
           {/* Description */}
           <div className="mb-6 space-y-4 mt-6">
-            <p className="text-gray-700 leading-relaxed text-base fade-in">
+            <motion.p className="text-gray-700 leading-relaxed text-base" variants={fadeInUp}>
               Under the visionary leadership of our Founder, Mr. Anand, Anand Shipping was established on the foundational principle of
               <span className='font-bold text-amber-500'> "Excellence in Every Delivery"</span> — where precision, privacy, and premium care converge to redefine logistics.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base fade-in">
+            </motion.p>
+            <motion.p className="text-gray-700 leading-relaxed text-base" variants={fadeInUp}>
               This commitment forms the bedrock of our company's ethos, guiding our mission to provide shipping solutions that don't just meet expectations, but set new benchmarks for protection and reliability.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base fade-in">
+            </motion.p>
+            <motion.p className="text-gray-700 leading-relaxed text-base" variants={fadeInUp}>
               With extensive experience in logistics and a passion for exceptional service, Mr. Anand envisioned a future where every shipment receives the attention and security it deserves.
-            </p>
+            </motion.p>
           </div>
 
           {/* Core Values */}
-          <div className="mt-8 fade-in">
+          <motion.div className="mt-8" variants={fadeInUp}>
             <h3 className="text-xl font-bold text-slate-800 mb-4">Our Core Values</h3>
             <div className="space-y-3">
               {[
@@ -92,20 +134,22 @@ const About = () => {
                 { icon: 'fas fa-handshake', text: 'Premium Client Care' },
                 { icon: 'fas fa-lock', text: 'Absolute Privacy & Security' }
               ].map((value, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="flex items-center text-gray-700 p-3 rounded-lg hover:bg-amber-50 transition-all duration-300 transform hover:translate-x-2"
+                  className="flex items-center text-gray-700 p-3 rounded-lg hover:bg-amber-50 transition-all duration-300"
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <i className={`${value.icon} text-amber-500 mr-3 text-lg`}></i>
                   <span className="font-medium">{value.text}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
-  );
+  )
 
   const ideologyPillars = [
     {
@@ -126,25 +170,70 @@ const About = () => {
   ]
 
   return (
-    <div className="overflow-hidden pt-20">
-      {/* Hero Section with enhanced animation */}
-      <section className="text-white py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-amber-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        </div>
-       
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="text-xl text-amber-300 mb-4 font-sans fade-in">
-            Prestige in Every Parcel
-          </div>
-          <h1 className="text-2xl md:text-4xl font-bold mb-4 fade-in">
-            Our Foundation
-          </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto fade-in animation-delay-300">
-            Where precision meets premium care in logistics
-          </p>
+    <div className="overflow-hidden" ref={ref}>
+      {/* Hero Section with framer-motion */}
+      <section className="text-white py-32 bg-gradient-to-br from-blue-900 via-blue-950 to-blue-900 relative overflow-hidden">
+        <div className="container mx-auto px-6 text-center relative z-10">
+          {/* Premium badge */}
+          <motion.div 
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={mainControls}
+            variants={fadeInUp}
+          >
+            <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+            <span className="text-amber-300 font-medium tracking-wide">Excellence in Motion</span>
+          </motion.div>
+
+          {/* Main heading with gradient */}
+          <motion.h1 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={mainControls}
+            variants={fadeInUp}
+          >
+            <span className="bg-gradient-to-r from-white to-amber-100 bg-clip-text text-transparent">
+              Our Legacy
+            </span>
+          </motion.h1>
+
+          {/* Enhanced description */}
+          <motion.p 
+            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            animate={mainControls}
+            variants={fadeInUp}
+            transition={{ delay: 0.2 }}
+          >
+            we have redefined premium logistics through innovative solutions, 
+            unwavering reliability, and exceptional client partnerships that transcend borders.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={mainControls}
+            variants={fadeInUp}
+            transition={{ delay: 0.4 }}
+          >
+            <motion.button 
+              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-lg shadow-lg"
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(245, 158, 11, 0.25)" }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+            >
+              Explore Our Journey
+            </motion.button>
+            <motion.button 
+              className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-lg"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+            >
+              Our Commitment
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -155,44 +244,76 @@ const About = () => {
         </div>
       </section>
 
-      {/* Ideology Section with enhanced animations */}
+      {/* Ideology Section with framer-motion */}
       <section className="py-6 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4 fade-in">Our Premium Offerings</h2>
-            <div className="w-20 h-1 bg-amber-500 mx-auto mb-8 scale-in"></div>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed fade-in">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, threshold: 0.1 }}
+            variants={staggerContainer}
+          >
+            <motion.h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-4" variants={fadeInUp}>
+              Our Premium Offerings
+            </motion.h2>
+            <motion.div className="w-20 h-1 bg-amber-500 mx-auto mb-8" variants={scaleIn}></motion.div>
+            <motion.p className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed" variants={fadeInUp}>
               Designed for clients who value precision, privacy, and premium care, we offer an elevated shipping experience where every parcel is treated with the highest level of attention and security.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, threshold: 0.1 }}
+            variants={staggerContainer}
+          >
             {ideologyPillars.map((pillar, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl text-center fade-in group hover:-translate-y-2 transition-all duration-500"
-                style={{ animationDelay: `${index * 200}ms` }}
+                className="bg-white p-8 rounded-2xl shadow-lg text-center group"
+                variants={fadeInUp}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
+                transition={{ duration: 0.5 }}
               >
-                <div className="bg-gradient-to-r from-amber-400 to-amber-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <motion.div 
+                  className="bg-gradient-to-r from-amber-400 to-amber-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <i className={`${pillar.icon} text-white text-2xl`}></i>
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-amber-600 transition-colors duration-300">{pillar.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Mission & Vision Section */}
       <section className="py-12 md:py-20 bg-blue-800 text-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto">
+          <motion.div 
+            className="max-w-6xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, threshold: 0.1 }}
+            variants={staggerContainer}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-center md:text-left">
-                <div className="inline-flex items-center justify-center md:justify-start gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <motion.div className="text-center md:text-left" variants={slideInLeft}>
+                <motion.div 
+                  className="inline-flex items-center justify-center md:justify-start gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
+                  variants={scaleIn}
+                >
                   <span>🎯</span> Our Purpose
-                </div>
+                </motion.div>
                 <h2 className="text-2xl md:text-4xl font-bold mb-6">Anand Shipping Mission</h2>
                 <p className="text-slate-300 mb-6 leading-relaxed text-base md:text-lg">
                   To deliver logistics experiences that not only meet expectations but exceed them, providing precision, privacy, and premium care for every parcel entrusted to us.
@@ -203,21 +324,25 @@ const About = () => {
                     'Ensure absolute security and discretion', 
                     'Provide real-time visibility and communication'
                   ].map((item, index) => (
-                    <div
+                    <motion.div
                       key={index}
                       className="flex items-center gap-3"
+                      variants={fadeInUp}
                     >
                       <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
                       <span className="text-slate-300 text-sm md:text-base">{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="text-center md:text-left">
-                <div className="inline-flex items-center justify-center md:justify-start gap-2 bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <motion.div className="text-center md:text-left" variants={slideInRight}>
+                <motion.div 
+                  className="inline-flex items-center justify-center md:justify-start gap-2 bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
+                  variants={scaleIn}
+                >
                   <span>🔭</span> Future Vision
-                </div>
+                </motion.div>
                 <h2 className="text-2xl md:text-4xl font-bold mb-6">Anand Shipping Vision</h2>
                 <p className="text-slate-300 mb-6 leading-relaxed text-base md:text-lg">
                   To become the world's most trusted premium logistics partner, setting the global standard for sophisticated, secure, and seamless shipping experiences.
@@ -228,132 +353,56 @@ const About = () => {
                     'Innovate in secure logistics technology', 
                     'Build legacy of unmatched client trust'
                   ].map((item, index) => (
-                    <div
+                    <motion.div
                       key={index}
                       className="flex items-center gap-3"
+                      variants={fadeInUp}
                     >
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       <span className="text-slate-300 text-sm md:text-base">{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-
-      {/* Mission Statement with enhanced animation */}
+      {/* Mission Statement with framer-motion */}
       <section className="py-6 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-8 fade-in">Our Commitment</h2>
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-amber-500 transform hover:scale-105 transition-transform duration-300">
-              <p className="text-lg text-gray-700 leading-relaxed mb-6 fade-in">
-                "At Anand Shipping, we are committed to transforming logistics through premium shipping solutions that honor our foundational principle of excellence.
-                We believe that protecting your valuable shipments through sophisticated logistics is not just our business, but our promise to you."
-              </p>
-              <div className="text-amber-500 font-semibold fade-in animation-delay-500">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, threshold: 0.1 }}
+            variants={staggerContainer}
+          >
+            <motion.h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-8" variants={fadeInUp}>
+              Our Commitment
+            </motion.h2>
+            <motion.div 
+              className="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-amber-500"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.p className="text-lg text-gray-700 leading-relaxed mb-6" variants={fadeInUp}>
+                At Anand Shipping, we are committed to transforming logistics through premium shipping solutions that honor our foundational principle of excellence.
+                We believe that protecting your valuable shipments through sophisticated logistics is not just our business, but our promise to you.
+              </motion.p>
+              <motion.div 
+                className="text-amber-500 font-semibold"
+                variants={fadeInUp}
+                transition={{ delay: 0.3 }}
+              >
                 — Anand, Founder & CEO
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-
-      
-      {/* Enhanced Animation Styles */}
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-       
-        @keyframes slide-in-left {
-          from {
-            opacity: 0;
-            transform: translateX(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-       
-        @keyframes slide-in-right {
-          from {
-            opacity: 0;
-            transform: translateX(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-       
-        @keyframes scale-in {
-          from {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-       
-        .fade-in {
-          opacity: 0;
-          animation: fade-in-up 0.8s ease-out forwards;
-        }
-       
-        .slide-in-left {
-          opacity: 0;
-          animation: slide-in-left 0.8s ease-out forwards;
-        }
-       
-        .slide-in-right {
-          opacity: 0;
-          animation: slide-in-right 0.8s ease-out forwards;
-        }
-       
-        .scale-in {
-          opacity: 0;
-          animation: scale-in 0.6s ease-out forwards;
-        }
-       
-        .visible {
-          opacity: 1;
-        }
-       
-        .animation-delay-300 {
-          animation-delay: 0.3s;
-        }
-       
-        .animation-delay-500 {
-          animation-delay: 0.5s;
-        }
-       
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-       
-        /* Hover effects */
-        .group:hover .group-hover\:scale-110 {
-          transform: scale(1.1);
-        }
-       
-        .group:hover .group-hover\:-translate-y-2 {
-          transform: translateY(-0.5rem);
-        }
-      `}</style>
     </div>
   )
 }

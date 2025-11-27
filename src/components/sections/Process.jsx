@@ -299,12 +299,14 @@ const Process = () => {
       </motion.section>
 
       {/* IMPACT SECTION */}
+      
+      {/* IMPACT SECTION */}
       <section
         ref={impactRef}
-        className="relative py-16 md:py-20 bg-cover bg-center"
+        className="relative py-24 bg-fixed bg-cover bg-center"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80")',
+            'url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80%22)%27',
         }}
       >
         <div className="absolute inset-0 bg-blue-900/70"></div>
@@ -316,16 +318,16 @@ const Process = () => {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-10 text-white"
+              className="text-4xl font-bold text-center mb-12 relative text-white"
             >
               Our Global Impact
             </motion.h2>
-
+ 
             <motion.div
               variants={itemVariants}
-              className="max-w-4xl mx-auto mb-12 md:mb-14 text-center"
+              className="impact-content max-w-4xl mx-auto mb-16 text-center"
             >
-              <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+              <p className="text-xl text-gray-200">
                 At Anand Shipping, we're not just moving packages - we're
                 building connections, enabling global trade, and creating
                 opportunities for businesses worldwide. Our commitment to
@@ -333,8 +335,8 @@ const Process = () => {
                 our clients.
               </p>
             </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+ 
+            <div className="impact-cards grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
                   icon: "fa-globe-americas",
@@ -362,24 +364,24 @@ const Process = () => {
                   key={index}
                   variants={cardVariants}
                   whileHover={{ y: -5 }}
-                  className="bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/20 transition-all duration-300 group cursor-pointer text-center"
+                  className="impact-card bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 transition-all duration-300 group cursor-pointer text-center"
                 >
                   {/* Top Center Icon */}
-                  <div className="flex justify-center mb-5 md:mb-6">
-                    <div className="text-3xl text-amber-400 bg-white/20 p-4 rounded-full transition-all duration-300 group-hover:bg-amber-400 group-hover:text-white group-hover:scale-110">
+                  <div className="flex justify-center mb-6">
+                    <div className="impact-icon text-3xl text-amber-400 bg-white/20 p-4 rounded-full transition-all duration-300 group-hover:bg-amber-400 group-hover:text-white group-hover:scale-110">
                       <i className={`fas ${impact.icon}`}></i>
                     </div>
                   </div>
-
-                  <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white group-hover:text-amber-100 transition-colors duration-300">
+ 
+                  <h3 className="text-xl font-bold mb-4 text-white group-hover:text-amber-100 transition-colors duration-300">
                     {impact.title}
                   </h3>
-
-                  <p className="text-gray-200 mb-5 md:mb-6 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed text-sm md:text-base">
+ 
+                  <p className="text-gray-200 mb-6 group-hover:text-gray-100 transition-colors duration-300 leading-relaxed">
                     {impact.description}
                   </p>
-
-                  <div className="text-amber-400 font-bold text-base md:text-lg group-hover:text-amber-300 transition-colors duration-300 border-t border-white/20 pt-3 md:pt-4">
+ 
+                  <div className="text-amber-400 font-bold text-lg group-hover:text-amber-300 transition-colors duration-300 border-t border-white/20 pt-4">
                     {impact.stats}
                   </div>
                 </motion.div>
@@ -388,6 +390,7 @@ const Process = () => {
           </motion.div>
         </div>
       </section>
+ 
 
       {/* ADDITIONAL FEATURES SECTION */}
       <motion.section
