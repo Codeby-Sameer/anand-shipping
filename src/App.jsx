@@ -12,7 +12,7 @@ import TrackingPage from './pages/TrackingPage'
 function App() {
   return (
     <Router>
-      <ScrollToTop />
+      
       <div className="App">
         <Header />
         <main>
