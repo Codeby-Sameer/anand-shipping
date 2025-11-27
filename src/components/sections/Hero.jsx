@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -30,22 +31,26 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row sm:justify-center md:justify-start gap-3 sm:gap-4">
             <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="w-full sm:w-auto px-7 md:px-8 py-3 bg-amber-400 text-blue-900 font-bold rounded-full shadow-md hover:bg-amber-500 transition flex items-center justify-center text-sm md:text-base"
-            >
-              <i className="fas fa-calendar-check mr-2" />
-              Schedule Pickup
-            </motion.button>
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.97 }}
+  className="w-full sm:w-auto px-7 md:px-8 py-3 bg-amber-400 text-blue-900 font-bold rounded-full shadow-md hover:bg-amber-500 transition flex items-center justify-center text-sm md:text-base"
+>
+  <Link to="/tracking" className="flex items-center">
+    <i className="fas fa-calendar-check mr-2" />
+    Track Shipment
+  </Link>
+</motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="w-full sm:w-auto px-7 md:px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-blue-900 transition flex items-center justify-center text-sm md:text-base"
-            >
-              <i className="fas fa-play-circle mr-2" />
-              Watch Overview
-            </motion.button>
+<motion.button
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.97 }}
+  className="w-full sm:w-auto px-7 md:px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-blue-900 transition flex items-center justify-center text-sm md:text-base"
+>
+  <Link to="/contact" className="flex items-center">
+    <i className="fas fa-envelope mr-2" />
+    Contact Us
+  </Link>
+</motion.button>
           </div>
 
           <div className="mt-6 md:mt-8 flex items-center justify-center md:justify-start">

@@ -168,73 +168,59 @@ const Footer = () => {
           </div>
  
           {/* Our Divisions */}
-          <div>
-            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gold">Our Divisions</h3>
-            <ul className="space-y-2 text-xs sm:text-sm">
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gold transition-colors block py-1"
-                >
- 
-                  Priority Express Delivery
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gold transition-colors block py-1"
-                >
- 
-                  White-Glove Handling
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gold transition-colors block py-1"
-                >
-                  Confidential Logistics
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gold transition-colors block py-1"
-                >
-                 Elite Protective Packaging
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gold transition-colors block py-1"
-                >
-                Bulk Cargo Transport
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gold transition-colors block py-1"
-                >
-                Last-Mile Delivery
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div>
+  <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gold">Our Divisions</h3>
+  <ul className="space-y-2 text-xs sm:text-sm">
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Priority Express Delivery
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        White-Glove Handling
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Confidential Logistics
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Elite Protective Packaging
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Bulk Cargo Transport
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Last-Mile Delivery
+      </Link>
+    </li>
+  </ul>
+</div>
  
           {/* Contact Info */}
           <div>
