@@ -199,7 +199,7 @@ const About = () => {
 
           {/* Enhanced description */}
           <motion.p 
-            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-sm md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={mainControls}
             variants={fadeInUp}
