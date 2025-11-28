@@ -237,7 +237,7 @@ const Ship = () => {
           {/* Left Image */}
           <motion.div variants={containerVariants}>
             <img
-              src='./images/image.png'
+              src='https://thumbs.dreamstime.com/b/global-business-logistics-import-export-background-container-cargo-freight-ship-transport-concept-137520514.jpg'
               alt="Quick logistics and transport"
               className="rounded-xl shadow-lg w-full object-cover"
             />

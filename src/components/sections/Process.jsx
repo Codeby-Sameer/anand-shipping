@@ -132,7 +132,7 @@ const Process = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-10 md:mb-14">
             <motion.div variants={fadeUp}>
               <img
-                src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                src="https://img.freepik.com/free-photo/global-logistics-transportation-network_23-2151989598.jpg?semt=ais_hybrid&w=740&q=80"
                 alt="Anand Shipping Premium Logistics"
                 className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 md:h-96 object-cover"
               />
@@ -176,127 +176,128 @@ const Process = () => {
       </motion.section>
 
       {/* STATS SECTION - ENHANCED CONTENT */}
-      <motion.section
-        className="py-1 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* LEFT: TEXT + CALL CARD */}
-          <motion.div className="space-y-5 md:space-y-6" variants={fadeUp}>
-            <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-blue-600 uppercase">
-              Excellence in Logistics
-            </p>
+      {/* STATS SECTION - ENHANCED CONTENT */}
+<motion.section
+  className="py-12 md:py-14 bg-gradient-to-br from-gray-50 to-blue-50"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
+  <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
+    {/* LEFT: TEXT + CALL CARD */}
+    <motion.div className="space-y-5 md:space-y-6" variants={fadeUp}>
+      <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-blue-600 uppercase">
+        Excellence in Logistics
+      </p>
 
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
-              Trusted by Elite Clients <br /> Worldwide
-            </h2>
+      <h2 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
+        Trusted by Elite Clients <br /> Worldwide
+      </h2>
 
-            <p className="text-gray-600 text-sm md:text-lg leading-relaxed max-w-xl">
-              Anand Shipping has been the preferred logistics partner for businesses
-              that demand precision, security, and premium service. Our commitment
-              to excellence ensures your valuable shipments receive the attention
-              and care they deserve, every single time.
-            </p>
+      <p className="text-gray-600 text-sm md:text-lg leading-relaxed max-w-xl">
+        Anand Shipping has been the preferred logistics partner for businesses
+        that demand precision, security, and premium service. Our commitment
+        to excellence ensures your valuable shipments receive the attention
+        and care they deserve, every single time.
+      </p>
 
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-white text-xs" />
-                </div>
-                <span className="text-gray-700 text-sm md:text-base">
-                  99.7% on-time delivery success rate
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-white text-xs" />
-                </div>
-                <span className="text-gray-700 text-sm md:text-base">
-                  Real-time GPS tracking &amp; monitoring
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-white text-xs" />
-                </div>
-                <span className="text-gray-700 text-sm md:text-base">
-                  Dedicated premium account management
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-white text-xs" />
-                </div>
-                <span className="text-gray-700 text-sm md:text-base">
-                  Up to $1,000,000 insurance coverage
-                </span>
-              </div>
-            </div>
-
-            {/* Call for any query */}
-            <div className="flex items-center gap-4 pt-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center overflow-hidden">
-                <i className="fas fa-headset text-white text-xl md:text-2xl" />
-              </div>
-              <div>
-                <p className="text-xs md:text-sm text-gray-500 font-medium">
-                  Premium Concierge Support
-                </p>
-                <p className="text-lg md:text-2xl font-bold text-blue-600">
-                  +91 98765 43210
-                </p>
-                <p className="text-[10px] md:text-xs text-gray-500 mt-1">
-                  Available 24/7
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT: 3 FLAT COLOURED CARDS */}
-          <motion.div
-            className="grid grid-cols-2 gap-4 max-w-md ml-auto md:ml-0 lg:ml-auto"
-            variants={staggerContainer}
-          >
-            {/* Premium Clients - Blue card */}
-            <motion.div
-              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-5 md:p-6 shadow-lg rounded-lg flex flex-col justify-between"
-              variants={fadeUp}
-            >
-              <div className="text-2xl md:text-3xl mb-3">👥</div>
-              <Counter target={500} suffix="+" className="text-white" />
-              <p className="mt-2 text-xs md:text-sm font-medium">
-                Premium Clients
-              </p>
-            </motion.div>
-
-            {/* Successful Deliveries - Green card */}
-            <motion.div
-              className="bg-gradient-to-br from-green-500 to-green-600 text-white p-5 md:p-6 shadow-lg rounded-lg flex flex-col justify-between"
-              variants={fadeUp}
-            >
-              <div className="text-2xl md:text-3xl mb-3">⭐</div>
-              <Counter target={25000} suffix="+" className="text-white" />
-              <p className="mt-2 text-xs md:text-sm font-medium">
-                Successful Deliveries
-              </p>
-            </motion.div>
-
-            {/* Global Reach - Purple card */}
-            <motion.div
-              className="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-5 md:p-6 shadow-lg rounded-lg flex flex-col justify-between col-span-2"
-              variants={fadeUp}
-            >
-              <div className="text-2xl md:text-3xl mb-3">🌍</div>
-              <Counter target={67} suffix="+" className="text-white" />
-              <p className="mt-2 text-xs md:text-sm font-medium">
-                Countries Served
-              </p>
-            </motion.div>
-          </motion.div>
+      <div className="space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+            <i className="fas fa-check text-white text-xs" />
+          </div>
+          <span className="text-gray-700 text-sm md:text-base">
+            99.7% on-time delivery success rate
+          </span>
         </div>
-      </motion.section>
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+            <i className="fas fa-check text-white text-xs" />
+          </div>
+          <span className="text-gray-700 text-sm md:text-base">
+            Real-time GPS tracking &amp; monitoring
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+            <i className="fas fa-check text-white text-xs" />
+          </div>
+          <span className="text-gray-700 text-sm md:text-base">
+            Dedicated premium account management
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+            <i className="fas fa-check text-white text-xs" />
+          </div>
+          <span className="text-gray-700 text-sm md:text-base">
+            Up to $1,000,000 insurance coverage
+          </span>
+        </div>
+      </div>
+
+      {/* Call for any query */}
+      <div className="flex items-center gap-4 pt-4 bg-white rounded-xl p-4 shadow-sm border border-gray-200">
+        <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center overflow-hidden">
+          <i className="fas fa-headset text-white text-xl md:text-2xl" />
+        </div>
+        <div>
+          <p className="text-xs md:text-sm text-gray-500 font-medium">
+            Premium Concierge Support
+          </p>
+          <p className="text-lg md:text-2xl font-bold text-blue-600">
+            +91 98765 43210
+          </p>
+          <p className="text-[10px] md:text-xs text-gray-500 mt-1">
+            Available 24/7
+          </p>
+        </div>
+      </div>
+    </motion.div>
+
+    {/* RIGHT: 3 FLAT COLOURED CARDS */}
+    <motion.div
+      className="grid grid-cols-2 gap-4 max-w-md ml-auto md:ml-0 lg:ml-auto"
+      variants={staggerContainer}
+    >
+      {/* Premium Clients - Blue card */}
+      <motion.div
+        className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-5 md:p-6 shadow-lg rounded-lg flex flex-col justify-between"
+        variants={fadeUp}
+      >
+        <div className="text-2xl md:text-3xl mb-3">👥</div>
+        <Counter target={500} suffix="+" className="text-white" />
+        <p className="mt-2 text-xs md:text-sm font-medium">
+          Premium Clients
+        </p>
+      </motion.div>
+
+      {/* Successful Deliveries - Green card */}
+      <motion.div
+        className="bg-gradient-to-br from-green-500 to-green-600 text-white p-5 md:p-6 shadow-lg rounded-lg flex flex-col justify-between"
+        variants={fadeUp}
+      >
+        <div className="text-2xl md:text-3xl mb-3">⭐</div>
+        <Counter target={25000} suffix="+" className="text-white" />
+        <p className="mt-2 text-xs md:text-sm font-medium">
+          Successful Deliveries
+        </p>
+      </motion.div>
+
+      {/* Global Reach - Purple card */}
+      <motion.div
+        className="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-5 md:p-6 shadow-lg rounded-lg flex flex-col justify-between col-span-2"
+        variants={fadeUp}
+      >
+        <div className="text-2xl md:text-3xl mb-3">🌍</div>
+        <Counter target={67} suffix="+" className="text-white" />
+        <p className="mt-2 text-xs md:text-sm font-medium">
+          Countries Served
+        </p>
+      </motion.div>
+    </motion.div>
+  </div>
+</motion.section>
 
       {/* IMPACT SECTION */}
       <section
