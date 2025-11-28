@@ -6,13 +6,14 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Servicespage'
 import Contact from './pages/Contact'
-import ScrollToTop from './components/common/ScrolltoTop'
+
 import TrackingPage from './pages/TrackingPage'
+import ScrollToTop from './components/common/ScrollToTop'
 
 function App() {
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollToTop/>
       <div className="App">
         <Header />
         <main>

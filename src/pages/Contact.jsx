@@ -122,7 +122,7 @@ const Contact = () => {
         transition={{ duration: 1 }}
         className="relative py-12 md:py-16 bg-blue-800 overflow-hidden"
       >
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto px-4 py-8 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={
@@ -148,7 +148,7 @@ const Contact = () => {
                 isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
               }
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-base sm:text-lg md:text-2xl text-white leading-relaxed mb-6 md:mb-8 max-w-3xl mx-auto px-2 sm:px-4"
+              className="text-base sm:text-md md:text-2xl text-white leading-relaxed mb-6 md:mb-8 max-w-3xl mx-auto px-2 sm:px-4"
             >
               Your cargo, our expertise. Together, we&apos;ll move your
               shipments with precision, safety, and speed.

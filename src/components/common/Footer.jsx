@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MapPin, Mail, Phone, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -117,196 +118,158 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="light-navy text-white pt-10 pb-6">
-        <div className="container mx-auto px-4">
-          {/* Top grid: stacks on mobile */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-8">
-          
-            <div className="footer-about">
-              <div className="flex items-center space-x-3 mb-3">
-                {/* Founder Logo */}
-                <div className="flex items-center sm:mr-0">
-                  <div className="h-14 w-14 rounded-full shadow-lg border-2 border-amber-300 overflow-hidden mr-3">
-                    <img
-                      src="./images/CEO.png"
-                      alt="Anand Shipping CEO"
-                      className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-110"
-                    />
-                  </div>
-
-                  {/* Company Logo */}
-                  <div className="h-13 w-10 overflow-hidden mr-3">
-                    <img
-                      src="./images/Logo.png"
-                      alt="Anand Shipping Logo"
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-
-                  <Link to="/" className=" hover:opacity-90 transition-opacity duration-300">
-                    <div>
-                      <span className="sm:text-md lg:text-lg font-bold"><span className='text-amber-400'>ANAND</span> SHIPPING</span>
-                      <p className="text-blue-200 text-[10px] italic -mt-0.5">"Prestige in Every Parcel"</p>
-                    </div>
-                  </Link>
+      
+      <footer className="bg-navy text-white">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          {/* Company Info */}
+          <div className="space-y-4 sm:space-y-4">
+            <div className="flex flex-row items-start sm:items-center space-y-3 space-x-2 mb-4">
+              <div className="relative">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105">
+                  <img src='/img/logo.png' alt="logo" className='w-full p-2 sm:p-4' />
                 </div>
               </div>
-              <p className="text-blue-100 mb-4 text-sm sm:text-base leading-relaxed">
-                Premium logistics solutions for clients who value precision, privacy, 
-                and premium care. Elevating shipping experiences worldwide.
-              </p>
-
-              <div className="social-links flex items-center space-x-3">
-                {[
-                  { platform: "facebook-f", url: "#" },
-                  { platform: "twitter", url: "#" },
-                  { platform: "linkedin-in", url: "#" },
-                  { platform: "instagram", url: "#" },
-                ].map((social) => (
-                  <a
-                    key={social.platform}
-                    href={social.url}
-                    aria-label={social.platform}
-                    className="social-link w-10 h-10 sm:w-10 sm:h-10 bg-white bg-opacity-10 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:bg-amber-400 hover:text-blue-900 hover:-translate-y-1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className={`fab fa-${social.platform}`} />
-                  </a>
-                ))}
+              <div className="flex  flex-row items-baseline space-x-1 sm:space-x-2">
+                <div className="text-xl sm:text-2xl font-bold text-white ">ANAND</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">GROUP</div>
               </div>
             </div>
-
-            {/* Quick Links  */}
-            <div className="footer-links ml-4 md:ml-8">
-              <h3 className="text-white text-lg sm:text-xl font-bold mb-4">
-                Quick Links
-              </h3>
-              <ul className="">
-                {[
-                  { path: "/", label: "Home" },
-                  { path: "/about", label: "About" },
-                  { path: "/services", label: "Services" },
-                  { path: "/tracking", label: "Track Shipment" },
-                  { path: "/contact", label: "Contact" },
-                ].map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-blue-100 no-underline block py-1 px-1 rounded-sm transition-all duration-200 hover:text-amber-400 hover:pl-2 text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Our Services */}
-            <div className="footer-links">
-              <h3 className="text-white text-lg sm:text-xl font-bold mb-4">
-                Our Services
-              </h3>
-              <ul className="space-y-1 text-sm">
-                {[
-                  { title: "Priority Express Delivery" },
-                  { title: "White-Glove Handling" },
-                  { title: "Confidential Logistics" },
-                  { title: "Elite Protective Packaging" },
-                  { title: "Global Cargo Transport" },
-                  { title: "Last-Mile Delivery" },
-                ].map((service) => (
-                  <li key={service.title}>
-                    <Link
-                      to="/services"
-                      className="text-blue-100 no-underline block py-1 transition-colors duration-200 hover:text-amber-400"
-                    >
-                      <span className="font-medium">{service.title}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact & Legal */}
-            <div className="footer-links">
-              <h3 className="text-white text-lg sm:text-xl font-bold mb-4">
-                Connect
-              </h3>
-              <div className="space-y-3 mb-4 text-sm">
-                <div className="flex items-start space-x-3">
-                  <i className="fas fa-map-marker-alt text-amber-400 mt-1" />
-                  <span className="text-blue-100">
-                    H.No. 131/A, 2nd Floor, MLA Colony, <br />
-                    Beside Vamsiram Banjara Abodes,<br />
-                    Road No.12, Lane 14, Banjara Hills,<br /> Hyderabad-500034.
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <i className="fas fa-phone text-amber-400" />
-                  <span className="text-blue-100">+91 98765 43210</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <i className="fas fa-envelope text-amber-400" />
-                  <span className="text-blue-100">info@anandshipping.com</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <i className="fas fa-headset text-amber-400" />
-                  <span className="text-blue-100">24/7 Premium Support</span>
-                </div>
-              </div>
-
-              <div className="legal-links">
-                <h4 className="text-white font-bold mb-3">Legal</h4>
-                <div className="flex flex-wrap gap-3 text-sm">
-                  <button
-                    onClick={() => openModal('privacy')}
-                    className="text-blue-200 no-underline transition-colors duration-200 hover:text-amber-400 cursor-pointer bg-transparent border-none"
-                  >
-                    Privacy Policy
-                  </button>
-                  <button
-                    onClick={() => openModal('terms')}
-                    className="text-blue-200 no-underline transition-colors duration-200 hover:text-amber-400 cursor-pointer bg-transparent border-none"
-                  >
-                    Terms
-                  </button>
-                  <button
-                    onClick={() => openModal('copyright')}
-                    className="text-blue-200 no-underline transition-colors duration-200 hover:text-amber-400 cursor-pointer bg-transparent border-none"
-                  >
-                    Copyright
-                  </button>
-                </div>
-              </div>
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+              Building a better tomorrow through innovation, integrity, and social responsibility.
+            </p>
+            <div className="flex space-x-3 sm:space-x-4 pt-2">
+              <a href="" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-300">
+                <Facebook className="w-3 h-3 sm:w-4 sm:h-4" />
+              </a>
+              <a href="" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-300">
+                <Twitter className="w-3 h-3 sm:w-4 sm:h-4" />
+              </a>
+              <a href="" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-300">
+                <Linkedin className="w-3 h-3 sm:w-4 sm:h-4" />
+              </a>
+              <a href="" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-300">
+                <Instagram className="w-3 h-3 sm:w-4 sm:h-4" />
+              </a>
             </div>
           </div>
-
-          {/* Copyright & Developed by */}
-          <div className="copyright pt-3 border-t border-blue-400 border-opacity-20">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-2">
-              {/* Left Side */}
-              <p className="text-blue-200 text-sm text-center md:text-left">
-                &copy; {currentYear} Anand Shipping. All rights reserved.{" "}
-                <span className="text-amber-400 font-medium">Prestige in Every Parcel</span>
-              </p>
-
-              {/* Right Side - Developed By */}
-              <p className="text-blue-200 text-sm text-center md:text-right mr-6">
-                Designed by{" "}
-                <a
-                  href="https://designcareermetrics.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-amber-400 font-semibold hover:underline"
-                >
-                  Design Career Metrics
-                </a>
-              </p>
+ 
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gold">Quick Links</h3>
+            <ul className="space-y-2 text-xs sm:text-sm">
+              <li><Link to="/" className="text-gray-300 hover:text-gold transition-colors block py-1">Home</Link></li>
+              <li><Link to="About" className="text-gray-300 hover:text-gold transition-colors block py-1">About</Link></li>
+              <li><Link to="Services" className="text-gray-300 hover:text-gold transition-colors block py-1">Services</Link></li>
+              <li><Link to="Contact" className="text-gray-300 hover:text-gold transition-colors block py-1">Contact</Link></li>
+              <li><Link to="Tracking" className="text-gray-300 hover:text-gold transition-colors block py-1">Tracking</Link></li>
+            </ul>
+          </div>
+ 
+          {/* Our Divisions */}
+        <div>
+  <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gold">Our Divisions</h3>
+  <ul className="space-y-2 text-xs sm:text-sm">
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Priority Express Delivery
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        White-Glove Handling
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Confidential Logistics
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Elite Protective Packaging
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Bulk Cargo Transport
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/services"
+        className="text-gray-300 hover:text-gold transition-colors block py-1"
+      >
+        Last-Mile Delivery
+      </Link>
+    </li>
+  </ul>
+</div>
+ 
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gold">Contact Info</h3>
+            <ul className="space-y-3 text-xs sm:text-sm text-gray-300">
+              <li className="flex items-start space-x-2">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0 mt-0.5" />
+                <span className="text-xs sm:text-sm">
+                  H.No. 131/A, 2nd Floor, MLA Colony, Beside Vamsiram Banjara Abodes, Road No.12, Lane 14, Banjara Hills, Hyderabad-500034.
+                </span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
+                <span className="text-xs sm:text-sm break-all">info.anandrealtyy@gmail.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
+                <span className="text-xs sm:text-sm">+91 1800 123 4567</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+ 
+        {/* Bottom Section */}
+        <div className="border-t border-blue-800 pt-6 sm:pt-8 mt-6 sm:mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
+              &copy;2025 Anand Group. All rights reserved.
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
+              &copy;Designed by{' '}
+              <a
+                href="https://designcareermetrics.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-gold transition-colors"
+              >
+                Designcareermetrics
+              </a>
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
+              <a  className="text-gray-400 hover:text-gold transition-colors whitespace-nowrap"  onClick={() => openModal('privacy')}>Privacy Policy</a>
+              <a  className="text-gray-400 hover:text-gold transition-colors whitespace-nowrap"  onClick={() => openModal('terms')}>Terms of Service</a>
+              <a  className="text-gray-400 hover:text-gold transition-colors whitespace-nowrap"  onClick={() => openModal('copyright')}>Copyright</a>
             </div>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
 
       {/* Modal Popups */}
       {activeModal && (
