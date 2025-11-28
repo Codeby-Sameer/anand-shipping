@@ -97,7 +97,7 @@ const Contact = () => {
     {
       question: "Do you offer insurance for valuable shipments?",
       answer:
-        "Yes, all high-value and sensitive shipments can be insured with coverage options up to $1,000,000. We use tamper-proof packaging and follow strict security protocols throughout transit.",
+        "Yes, all high value and sensitive shipments can be insured with coverage options up to $1,000,000. We use tamper proof packaging and follow strict security protocols throughout transit.",
     },
     {
       question: "What are your delivery timelines?",
@@ -197,7 +197,7 @@ const Contact = () => {
                   {
                     label: "Head Office",
                     icon: "fas fa-map-marker-alt",
-                    value: "Mumbai, Maharashtra, India",
+                    value: "Hyderabad, Telangana, India",
                   },
                   {
                     label: "Working Hours",
@@ -375,80 +375,83 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section
-        ref={faqRef}
-        className="py-10 md:py-16 bg-gradient-to-br from-blue-50 to-gray-50"
+      {/* FAQ Section */}
+<section
+  ref={faqRef}
+  className="py-10 md:py-16 bg-gradient-to-br from-blue-50 to-gray-50"
+>
+  <div className="container mx-auto px-4 sm:px-6">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate={isFaqInView ? "visible" : "hidden"}
+      className="max-w-4xl mx-auto"
+    >
+      <motion.div
+        variants={itemVariants}
+        className="text-center mb-10 md:mb-14"
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isFaqInView ? "visible" : "hidden"}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="text-center mb-10 md:mb-14"
-            >
-              <h2 className="text-2xl md:text-4xl font-bold text-blue-800 mb-3 md:mb-4">
-                Frequently Asked Questions
-              </h2>
-              <div className="w-20 h-1 md:w-24 md:h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
-              <p className="text-sm sm:text-base md:text-xl text-gray-600 mt-4 md:mt-6 max-w-2xl mx-auto px-2 sm:px-4">
-                Get answers to common questions about working with us
-              </p>
-            </motion.div>
+        <h2 className="text-2xl md:text-4xl font-bold text-blue-800 mb-3 md:mb-4">
+          Frequently Asked Questions
+        </h2>
+        <div className="w-20 h-1 md:w-24 md:h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
+        <p className="text-sm sm:text-base md:text-xl text-gray-600 mt-4 md:mt-6 max-w-2xl mx-auto px-2 sm:px-4">
+          Get answers to common questions about working with us
+        </p>
+      </motion.div>
 
-            <div className="space-y-3 md:space-y-5">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={cardVariants}
-                  whileHover={{ y: -2 }}
-                  className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-blue-300 transition-all duration-300 bg-white"
-                >
-                  <motion.button
-                    whileHover={{ backgroundColor: "#dbeafe" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full text-left p-4 md:p-5 flex justify-between items-center transition-colors duration-200"
-                    onClick={() => toggleFaq(index)}
-                  >
-                    <h3 className="font-semibold text-blue-800 text-sm md:text-lg pr-4 hover:text-blue-900 transition-colors duration-300">
-                      {faq.question}
-                    </h3>
-                    <motion.svg
-                      animate={{ rotate: openFaq === index ? 180 : 0 }}
-                      className="w-4 h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </motion.svg>
-                  </motion.button>
-                  {openFaq === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      transition={{ duration: 0.3 }}
-                      className="px-4 md:px-5 pb-4 md:pb-5"
-                    >
-                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+      <div className="space-y-3 md:space-y-5">
+        {faqs.map((faq, index) => (
+          <motion.div
+            key={index}
+            variants={cardVariants}
+            whileHover={{ y: -2 }}
+            className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-blue-300 transition-all duration-300 bg-white"
+          >
+            <button
+              className="w-full text-left p-4 md:p-5 flex justify-between items-center transition-colors duration-200 hover:bg-blue-50"
+              onClick={() => toggleFaq(index)}
+            >
+              <h3 className="font-semibold text-blue-800 text-sm md:text-lg pr-4">
+                {faq.question}
+              </h3>
+              <motion.svg
+                animate={{ rotate: openFaq === index ? 180 : 0 }}
+                className="w-4 h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </motion.svg>
+            </button>
+            
+            <motion.div
+              initial={false}
+              animate={{ 
+                height: openFaq === index ? "auto" : 0,
+                opacity: openFaq === index ? 1 : 0
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="px-4 md:px-5 pb-4 md:pb-5">
+                <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                  {faq.answer}
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </motion.div>
+  </div>
+</section>
     </div>
   );
 };

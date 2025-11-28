@@ -141,7 +141,7 @@ const CTA = () => {
             Experience Premium Shipping
           </h2>
           <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto">
-            Elevate your logistics with Anand Shipping — where every parcel
+            Elevate your logistics with Anand Shipping , where every parcel
             receives the attention and care it deserves.
           </p>
 

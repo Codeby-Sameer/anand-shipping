@@ -148,12 +148,12 @@ const Process = () => {
                 <span className="font-semibold text-amber-600">
                   "Excellence in Every Delivery"
                 </span>
-                , Anand Shipping has revolutionized the logistics industry by combining cutting-edge technology
-                with personalized white-glove service.
+                , Anand Shipping has revolutionized the logistics industry by combining cutting edge technology
+                with personalized white glove service.
               </p>
 
               <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                We understand that your shipments are more than just packages—they represent trust, value,
+                We understand that your shipments are more than just packages,they represent trust, value,
                 and important milestones. That's why we treat every parcel with the highest level of attention,
                 security, and care.
               </p>
@@ -207,7 +207,7 @@ const Process = () => {
             <i className="fas fa-check text-white text-xs" />
           </div>
           <span className="text-gray-700 text-sm md:text-base">
-            99.7% on-time delivery success rate
+            99.7% on time delivery success rate
           </span>
         </div>
         <div className="flex items-center gap-3">
@@ -215,7 +215,7 @@ const Process = () => {
             <i className="fas fa-check text-white text-xs" />
           </div>
           <span className="text-gray-700 text-sm md:text-base">
-            Real-time GPS tracking &amp; monitoring
+            Real time GPS tracking &amp; monitoring
           </span>
         </div>
         <div className="flex items-center gap-3">
@@ -329,7 +329,7 @@ const Process = () => {
               className="impact-content max-w-4xl mx-auto mb-16 text-center"
             >
               <p className="text-xl text-gray-200">
-                At Anand Shipping, we're not just moving packages - we're
+                At Anand Shipping, we're not just moving packages, we're
                 building connections, enabling global trade, and creating
                 opportunities for businesses worldwide. Our commitment to
                 excellence transforms logistics into a strategic advantage for
@@ -350,15 +350,15 @@ const Process = () => {
                   icon: "fa-shield-alt",
                   title: "Supply Chain Security",
                   description:
-                    "Our advanced security protocols and real-time monitoring ensure that valuable shipments arrive safely, protecting your business assets worldwide.",
+                    "Our advanced security protocols and real time monitoring ensure that valuable shipments arrive safely, protecting your business assets worldwide.",
                   stats: "99.7% Security Success Rate",
                 },
                 {
                   icon: "fa-clock",
-                  title: "Time-Sensitive Logistics",
+                  title: "Time Sensitive Logistics",
                   description:
-                    "We specialize in time-critical deliveries, ensuring that urgent shipments reach their destinations precisely when needed, every single time.",
-                  stats: "25,000+ On-Time Deliveries",
+                    "We specialize in time critical deliveries, ensuring that urgent shipments reach their destinations precisely when needed, every single time.",
+                  stats: "25,000+ On Time Deliveries",
                 },
               ].map((impact, index) => (
                 <motion.div
@@ -426,8 +426,8 @@ const Process = () => {
                 Unmatched Security
               </h3>
               <p className="text-gray-600 text-sm md:text-base">
-                Multi-layered security protocols including tamper-evident packaging,
-                background-checked handlers, and secure chain of custody documentation.
+                Multi layered security protocols including tamper evident packaging,
+                background checked handlers, and secure chain of custody documentation.
               </p>
             </motion.div>
 
@@ -440,7 +440,7 @@ const Process = () => {
                 Guaranteed Precision
               </h3>
               <p className="text-gray-600 text-sm md:text-base">
-                Time-sensitive delivery with real-time tracking and proactive
+                Time sensitive delivery with real time tracking and proactive
                 notifications. We meet our delivery commitments with 99.7% success rate.
               </p>
             </motion.div>
@@ -454,8 +454,8 @@ const Process = () => {
                 Premium Experience
               </h3>
               <p className="text-gray-600 text-sm md:text-base">
-                White-glove service with dedicated account managers, personalized
-                coordination, and luxury-level support for seamless logistics experience.
+                White glove service with dedicated account managers, personalized
+                coordination, and luxury level support for seamless logistics experience.
               </p>
             </motion.div>
           </motion.div>

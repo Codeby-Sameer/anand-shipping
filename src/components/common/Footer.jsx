@@ -128,16 +128,16 @@ const Footer = () => {
             <div className="flex flex-row items-start sm:items-center space-y-3 space-x-2 mb-4">
               <div className="relative">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105">
-                  <img src='/img/logo.png' alt="logo" className='w-full p-2 sm:p-4' />
+                  <img src='/images/Logo.png' alt="logo" className='w-full p-2 sm:p-4' />
                 </div>
               </div>
               <div className="flex  flex-row items-baseline space-x-1 sm:space-x-2">
-                <div className="text-xl sm:text-2xl font-bold text-white ">ANAND</div>
-                <div className="text-xl sm:text-2xl font-bold text-white">GROUP</div>
+                <div className="text-xl sm:text-2xl font-bold text-orange-500 ">ANAND</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">SHIPPING</div>
               </div>
             </div>
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              Building a better tomorrow through innovation, integrity, and social responsibility.
+             Delivering a brighter future through trusted logistics, integrity, and social responsibility.
             </p>
             <div className="flex space-x-3 sm:space-x-4 pt-2">
               <a href="" className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-white hover:text-navy transition-all duration-300">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -133,7 +134,7 @@ const Services = () => {
 
   const coreServices = [
     {
-      image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      image: "https://shippingeasy.com/wp-content/uploads/2021/04/Easy_graphics_USPS-Priority-Mail-Blog_FB-Linkedin.png",
       iconBg: "bg-blue-100",
       icon: "fas fa-rocket",
       iconColor: "text-blue-600",
@@ -142,19 +143,19 @@ const Services = () => {
       badgeIcon: "fas fa-bolt",
       badgeText: "Most Popular",
       title: "Priority Express Delivery",
-      body: "Expedited domestic & international delivery with guaranteed timeframes. Perfect for time-sensitive business documents, medical supplies, and urgent business materials.",
+      body: "Expedited domestic & international delivery with guaranteed timeframes. Perfect for time sensitive business documents, medical supplies, and urgent business materials.",
       borderTop: "border-t-4 border-t-blue-500",
       features: [
         "Express domestic & international delivery",
         "Guaranteed delivery timeframes",
         "Priority handling throughout transit",
-        "Real-time tracking & updates",
+        "Real time tracking & updates",
         "Dedicated customer support",
         "Flexible pickup scheduling"
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzcRWiQhGSXpj1NUopa9TzK0V2Hn0osdHlhvJUuC5yL4CUcw2kg-w6cb6I6y2bpfGTRDM&usqp=CAU",
       iconBg: "bg-amber-100",
       icon: "fas fa-hands",
       iconColor: "text-amber-600",
@@ -163,19 +164,19 @@ const Services = () => {
       badgeIcon: "fas fa-gem",
       badgeText: "Premium Service",
       title: "White-Glove Handling",
-      body: "Specialized care for luxury, fragile, and high-value items. Our trained professionals handle your precious items with the utmost care and attention.",
+      body: "Specialized care for luxury, fragile, and high value items. Our trained professionals handle your precious items with the utmost care and attention.",
       borderTop: "border-t-4 border-t-amber-500",
       features: [
         "Luxury item specialists",
         "Custom transport for fragile pieces",
-        "Temp & humidity-controlled vehicles",
-        "In-person handoff at both ends",
+        "Temp & humidity controlled vehicles",
+        "In person handoff at both ends",
         "Custom crating solutions",
         "Art & antique specialists"
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+      image: "https://d38eiojdjahdit.cloudfront.net/pos_malaysia_article_special_handling_document_5a44722d0e.jpg",
       iconBg: "bg-blue-100",
       icon: "fas fa-user-secret",
       iconColor: "text-blue-600",
@@ -187,16 +188,16 @@ const Services = () => {
       body: "Discreet movement of sensitive documents & confidential materials. Complete privacy and security for your most important shipments.",
       borderTop: "border-t-4 border-t-slate-500",
       features: [
-        "Tamper-evident packaging & seals",
+        "Tamper evident packaging & seals",
         "Discreet labelling & routing",
-        "Background-checked handlers",
+        "Background checked handlers",
         "Full chain-of-custody records",
         "Secure storage facilities",
         "Digital audit trails"
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      image: "https://swiftpak.imgix.net/uploads/insights/core-principles-protective-packaging/protective-packaging-void-fill.png?w=830&h=830&fit=crop&crop=edges,focalpoint&q=75&auto=format&fm=png",
       iconBg: "bg-amber-100",
       icon: "fas fa-box-open",
       iconColor: "text-amber-600",
@@ -210,14 +211,14 @@ const Services = () => {
       features: [
         "Custom packaging per item",
         "Premium protective materials",
-        "Climate-conscious packaging",
+        "Climate conscious packaging",
         "Branded unboxing experiences",
-        "Eco-friendly options",
+        "Eco friendly options",
         "Custom foam inserts"
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      image: "https://www.24x7packers.com/images/about/bulk-shipment.webp",
       iconBg: "bg-blue-100",
       icon: "fas fa-ship",
       iconColor: "text-blue-600",
@@ -226,19 +227,19 @@ const Services = () => {
       badgeIcon: "fas fa-anchor",
       badgeText: "Bulk Cargo",
       title: "Bulk Cargo Transport",
-      body: "Efficient transportation of large volume cargo via sea freight. Ideal for businesses requiring cost-effective bulk shipping solutions.",
+      body: "Efficient transportation of large volume cargo via sea freight. Ideal for businesses requiring cost effective bulk shipping solutions.",
       borderTop: "border-t-4 border-t-indigo-500",
       features: [
         "Heavy & oversized cargo",
-        "Secure tie-down systems",
+        "Secure tie down systems",
         "Custom freight documentation",
         "International port handling",
         "Container optimization",
-        "Multi-modal transport"
+        "Multi modal transport"
       ],
     },
     {
-      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      image: "https://5.imimg.com/data5/SELLER/Default/2024/10/461233435/PE/NI/ER/234353737/last-mile-delivery-service.jpeg",
       iconBg: "bg-amber-100",
       icon: "fas fa-truck-loading",
       iconColor: "text-amber-600",
@@ -246,8 +247,8 @@ const Services = () => {
       badgeColor: "text-green-700",
       badgeIcon: "fas fa-route",
       badgeText: "Most Needed",
-      title: "Last-Mile Delivery",
-      body: "Fast door-to-door delivery for e-commerce and premium clients. The final step in your supply chain, handled with precision and care.",
+      title: "Last Mile Delivery",
+      body: "Fast door to door delivery for e commerce and premium clients. The final step in your supply chain, handled with precision and care.",
       borderTop: "border-t-4 border-t-red-500",
       features: [
         "Doorstep delivery",
@@ -287,7 +288,7 @@ const Services = () => {
             transition={{ delay: 0.25, duration: 0.5 }}
           >
             Tailored logistics solutions for clients who value precision,
-            security, and a seamless, high-touch experience.
+            security, and a seamless, high touch experience.
           </motion.p>
 
           <motion.div
@@ -334,7 +335,7 @@ const Services = () => {
               Comprehensive Shipping Solutions
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-3xl mx-auto">
-              From express delivery to white-glove handling, Anand Shipping
+              From express delivery to white glove handling, Anand Shipping
               ensures every shipment is managed with care and precision.
             </p>
           </motion.div>
@@ -351,7 +352,7 @@ const Services = () => {
               {
                 icon: "fas fa-shield-alt",
                 title: "Secure & Protected",
-                desc: "Multi-layered security for valuable shipments.",
+                desc: "Multi layered security for valuable shipments.",
                 bg: "bg-amber-100",
                 color: "text-amber-600",
               },
@@ -401,7 +402,7 @@ const Services = () => {
               Core Shipping Services
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-              A compact suite of high-performance logistics offerings.
+              A compact suite of high performance logistics offerings.
             </p>
           </motion.div>
 
@@ -483,7 +484,7 @@ const Services = () => {
               Specialized Solutions
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-              Precision-built services for industries with specific needs.
+              Precision built services for industries with specific needs.
             </p>
           </motion.div>
 
@@ -494,7 +495,7 @@ const Services = () => {
                 iconBg: "bg-blue-100",
                 iconColor: "text-blue-600",
                 title: "Temperature Control",
-                desc: "Climate-controlled shipping for sensitive goods.",
+                desc: "Climate controlled shipping for sensitive goods.",
                 bullets: [
                   "Refrigerated & frozen options",
                   "Continuous temperature logging",
@@ -508,7 +509,7 @@ const Services = () => {
                 desc: "Rapid international shipping with customs support.",
                 bullets: [
                   "Customs brokerage assistance",
-                  "ETA-based global tracking",
+                  "ETA based global tracking",
                 ],
               },
               {
@@ -518,7 +519,7 @@ const Services = () => {
                 title: "Assembly & Installation",
                 desc: "Delivery plus setup for furniture & equipment.",
                 bullets: [
-                  "On-site professional assembly",
+                  "On site professional assembly",
                   "Installation & basic configuration",
                 ],
               },
@@ -527,9 +528,9 @@ const Services = () => {
                 iconBg: "bg-amber-100",
                 iconColor: "text-amber-600",
                 title: "Secure Storage",
-                desc: "Short-term secure, monitored storage spaces.",
+                desc: "Short term secure, monitored storage spaces.",
                 bullets: [
-                  "Climate-controlled facilities",
+                  "Climate controlled facilities",
                   "24/7 monitored security",
                 ],
               },
@@ -538,7 +539,7 @@ const Services = () => {
                 iconBg: "bg-blue-100",
                 iconColor: "text-blue-600",
                 title: "Concierge Support",
-                desc: "High-touch account & shipment management.",
+                desc: "High touch account & shipment management.",
                 bullets: [
                   "Dedicated account manager",
                   "Priority resolutions",
@@ -548,7 +549,7 @@ const Services = () => {
                 icon: "fas fa-map-marked-alt",
                 iconBg: "bg-amber-100",
                 iconColor: "text-amber-600",
-                title: "Real-Time Tracking",
+                title: "Real Time Tracking",
                 desc: "Live tracking and proactive notifications.",
                 bullets: ["GPS tracking dashboard", "Delay alerts & rerouting"],
               },
@@ -581,10 +582,10 @@ const Services = () => {
                   ))}
                 </ul>
 
-                <button className="text-blue-600 font-medium hover:text-blue-700 transition flex items-center text-xs">
+                {/* <button className="text-blue-600 font-medium hover:text-blue-700 transition flex items-center text-xs">
                   Explore options
                   <i className="fas fa-arrow-right ml-1 text-[10px]" />
-                </button>
+                </button> */}
               </motion.div>
             ))}
           </div>
@@ -605,7 +606,7 @@ const Services = () => {
               Our Shipping Process
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-              A clear, four-step flow for stress-free shipping.
+              A clear, four step flow for stress free shipping.
             </p>
           </motion.div>
 
@@ -674,6 +675,7 @@ const Services = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <Link to="/contact">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -681,8 +683,9 @@ const Services = () => {
             >
               <i className="fas fa-calendar-plus mr-2" />
               Schedule a Pickup
-            </motion.button>
+            </motion.button></Link>
 
+               <Link to="/contact">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -690,7 +693,7 @@ const Services = () => {
             >
               <i className="fas fa-phone-alt mr-2" />
               Speak to an Expert
-            </motion.button>
+            </motion.button></Link>
           </div>
 
           <p className="mt-5 text-blue-200 text-xs md:text-sm">

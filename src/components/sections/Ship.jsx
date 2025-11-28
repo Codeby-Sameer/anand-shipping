@@ -254,9 +254,9 @@ const Ship = () => {
             </h2>
 
             <p className="text-gray-600 leading-relaxed max-w-xl">
-              We deliver secure, premium-grade logistics with unmatched speed,
+              We deliver secure, premium grade logistics with unmatched speed,
               precision, and reliability. Every shipment is handled with
-              elite-level care, ensuring confidentiality, safety, and on-time
+              elite level care, ensuring confidentiality, safety, and on time
               delivery with options for 15 minute express service.
             </p>
 
@@ -287,7 +287,7 @@ const Ship = () => {
                     Express Delivery
                   </h4>
                   <p className="text-gray-600 text-xs leading-relaxed">
-                    15 minute metro delivery with real-time tracking
+                    15 minute metro delivery with real time tracking
                   </p>
                 </div>
               </div>

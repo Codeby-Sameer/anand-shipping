@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const About = () => {
   // Ref for scroll animations
@@ -155,17 +156,17 @@ const About = () => {
     {
       icon: 'fas fa-gem',
       title: 'Premium Service Standard',
-      description: 'Every parcel receives white-glove treatment with elite-grade protective packaging and priority handling, ensuring an elevated shipping experience.',
+      description: 'Every parcel receives white glove treatment with elite grade protective packaging and priority handling, ensuring an elevated shipping experience.',
     },
     {
       icon: 'fas fa-user-shield',
       title: 'Privacy & Discretion',
-      description: 'We understand the importance of confidentiality. Our secure logistics ensure your personal, confidential, or high-value items travel with absolute protection.',
+      description: 'We understand the importance of confidentiality. Our secure logistics ensure your personal, confidential, or high value items travel with absolute protection.',
     },
     {
       icon: 'fas fa-shipping-fast',
       title: 'Seamless Experience',
-      description: 'From real-time tracking with personalized updates to concierge-style coordination, we provide a refined, high-trust logistics experience.',
+      description: 'From real-time tracking with personalized updates to concierge style coordination, we provide a refined, high trust logistics experience.',
     }
   ]
 
@@ -217,6 +218,7 @@ const About = () => {
             variants={fadeInUp}
             transition={{ delay: 0.4 }}
           >
+            <Link to="/">
             <motion.button 
               className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-lg shadow-lg"
               whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(245, 158, 11, 0.25)" }}
@@ -224,7 +226,9 @@ const About = () => {
               transition={{ duration: 0.3 }}
             >
               Explore Our Journey
-            </motion.button>
+            </motion.button></Link>
+
+            <Link to="/services">
             <motion.button 
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-lg"
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
@@ -232,7 +236,7 @@ const About = () => {
               transition={{ duration: 0.3 }}
             >
               Our Commitment
-            </motion.button>
+            </motion.button></Link>
           </motion.div>
         </div>
       </section>
