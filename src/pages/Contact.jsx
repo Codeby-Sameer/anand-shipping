@@ -1,16 +1,13 @@
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import axios from "axios";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    projectType: "",
-    message: "",
-  });
   const [showSuccess, setShowSuccess] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState(null);
+  const [openFaq, setOpenFaq] = useState(null);
 
   const heroRef = useRef(null);
   const formRef = useRef(null);
@@ -54,35 +51,7 @@ const Contact = () => {
     },
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    setShowSuccess(true);
-    setIsSubmitting(false);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      projectType: "",
-      message: "",
-    });
-
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 5000);
-  };
-
+  // ✅ FAQ data
   const faqs = [
     {
       question: "What shipping services do you offer?",
@@ -106,11 +75,20 @@ const Contact = () => {
     },
   ];
 
-  const [openFaq, setOpenFaq] = useState(null);
-
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
+
+  // ✅ Formik + Yup validation schema
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Full name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    phone: Yup.string().required("Phone number is required"),
+    projectType: Yup.string().required("Shipment type is required"),
+    message: Yup.string().required("Please describe your shipment"),
+  });
 
   return (
     <div className="min-h-screen bg-blue-800 overflow-x-hidden mt-24">
@@ -244,7 +222,7 @@ const Contact = () => {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT CARD — FORM */}
+            {/* RIGHT CARD — FORM (Formik) */}
             <motion.div
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.02 }}
@@ -263,100 +241,174 @@ const Contact = () => {
                 </p>
               </motion.div>
 
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 md:space-y-5 flex-1"
+              <Formik
+                initialValues={{
+                  name: "",
+                  email: "",
+                  phone: "",
+                  projectType: "",
+                  message: "",
+                }}
+                validationSchema={validationSchema}
+                onSubmit={async (values, { setSubmitting, resetForm }) => {
+                  setApiError(null);
+
+                  // Map to backend-style payload (for future use)
+                  const payload = {
+                    full_name: values.name,
+                    email: values.email,
+                    phone_number: values.phone,
+                    shipment_type: values.projectType,
+                    message: values.message,
+                  };
+
+                  // 👀 Always log to console for testing
+                  console.log("📌 Shipping inquiry payload:", payload);
+
+                  try {
+                   
+                    const res = await axios.post(
+                      "https://jsonplaceholder.typicode.com/posts",
+                      payload,
+                      {
+                        headers: { "Content-Type": "application/json" },
+                      }
+                    );
+
+                    console.log("🎯 Dummy backend response:", res.data);
+
+                    setShowSuccess(true);
+                    resetForm();
+                    setTimeout(() => setShowSuccess(false), 5000);
+                  } catch (error) {
+                    console.error("❌ Error submitting shipment form:", error);
+                    setApiError(
+                      "Something went wrong while submitting your shipment request. Please try again."
+                    );
+                  } finally {
+                    setSubmitting(false);
+                  }
+                }}
               >
-                <motion.div variants={itemVariants}>
-                  <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="John David"
-                    required
-                  />
-                </motion.div>
+                {({ isSubmitting }) => (
+                  <Form className="space-y-4 md:space-y-5 flex-1">
+                    <motion.div variants={itemVariants}>
+                      <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
+                        Full Name *
+                      </label>
+                      <Field
+                        type="text"
+                        name="name"
+                        className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="John David"
+                      />
+                      <ErrorMessage
+                        name="name"
+                        component="p"
+                        className="mt-1 text-xs text-red-600"
+                      />
+                    </motion.div>
 
-                <motion.div variants={itemVariants}>
-                  <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="you@example.com"
-                    required
-                  />
-                </motion.div>
+                    <motion.div variants={itemVariants}>
+                      <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
+                        Email Address *
+                      </label>
+                      <Field
+                        type="email"
+                        name="email"
+                        className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="you@example.com"
+                      />
+                      <ErrorMessage
+                        name="email"
+                        component="p"
+                        className="mt-1 text-xs text-red-600"
+                      />
+                    </motion.div>
 
-                <motion.div variants={itemVariants}>
-                  <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="+91 98765 43210"
-                  />
-                </motion.div>
+                    <motion.div variants={itemVariants}>
+                      <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
+                        Phone Number *
+                      </label>
+                      <Field
+                        type="tel"
+                        name="phone"
+                        className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="+91 98765 43210"
+                      />
+                      <ErrorMessage
+                        name="phone"
+                        component="p"
+                        className="mt-1 text-xs text-red-600"
+                      />
+                    </motion.div>
 
-                <motion.div variants={itemVariants}>
-                  <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
-                    Shipment Type *
-                  </label>
-                  <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    required
-                  >
-                    <option value="">Select shipment type</option>
-                    <option value="parcel">Parcel Delivery</option>
-                    <option value="express">Express Shipping</option>
-                    <option value="cargo">Cargo / Freight</option>
-                    <option value="international">International Shipping</option>
-                    <option value="pickup">Schedule a Pickup</option>
-                  </select>
-                </motion.div>
+                    <motion.div variants={itemVariants}>
+                      <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
+                        Shipment Type *
+                      </label>
+                      <Field
+                        as="select"
+                        name="projectType"
+                        className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      >
+                        <option value="">Select shipment type</option>
+                        <option value="parcel">Parcel Delivery</option>
+                        <option value="express">Express Shipping</option>
+                        <option value="cargo">Cargo / Freight</option>
+                        <option value="international">
+                          International Shipping
+                        </option>
+                        <option value="pickup">Schedule a Pickup</option>
+                      </Field>
+                      <ErrorMessage
+                        name="projectType"
+                        component="p"
+                        className="mt-1 text-xs text-red-600"
+                      />
+                    </motion.div>
 
-                <motion.div variants={itemVariants}>
-                  <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
-                    Message *
-                  </label>
-                  <textarea
-                    rows="4"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 resize-none"
-                    placeholder="Tell us about your delivery, pickup location, package size, or any special instructions."
-                    required
-                  ></textarea>
-                </motion.div>
+                    <motion.div variants={itemVariants}>
+                      <label className="text-xs md:text-sm font-medium text-gray-700 mb-2 block">
+                        Message *
+                      </label>
+                      <Field
+                        as="textarea"
+                        rows="4"
+                        name="message"
+                        className="w-full px-3 py-2.5 md:py-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 resize-none"
+                        placeholder="Tell us about your delivery, pickup location, package size, or any special instructions."
+                      />
+                      <ErrorMessage
+                        name="message"
+                        component="p"
+                        className="mt-1 text-xs text-red-600"
+                      />
+                    </motion.div>
 
-                <motion.button
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 md:py-3 rounded-lg text-sm md:text-lg font-semibold shadow-lg"
-                >
-                  {isSubmitting ? "Processing..." : "Book Shipment"}
-                </motion.button>
-              </form>
+                    {apiError && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700"
+                      >
+                        {apiError}
+                      </motion.div>
+                    )}
+
+                    <motion.button
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 md:py-3 rounded-lg text-sm md:text-lg font-semibold shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? "Processing..." : "Book Shipment"}
+                    </motion.button>
+                  </Form>
+                )}
+              </Formik>
 
               {showSuccess && (
                 <motion.div
@@ -375,83 +427,82 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      {/* FAQ Section */}
-<section
-  ref={faqRef}
-  className="py-10 md:py-16 bg-gradient-to-br from-blue-50 to-gray-50"
->
-  <div className="container mx-auto px-4 sm:px-6">
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate={isFaqInView ? "visible" : "hidden"}
-      className="max-w-4xl mx-auto"
-    >
-      <motion.div
-        variants={itemVariants}
-        className="text-center mb-10 md:mb-14"
+      <section
+        ref={faqRef}
+        className="py-10 md:py-16 bg-gradient-to-br from-blue-50 to-gray-50"
       >
-        <h2 className="text-2xl md:text-4xl font-bold text-blue-800 mb-3 md:mb-4">
-          Frequently Asked Questions
-        </h2>
-        <div className="w-20 h-1 md:w-24 md:h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
-        <p className="text-sm sm:text-base md:text-xl text-gray-600 mt-4 md:mt-6 max-w-2xl mx-auto px-2 sm:px-4">
-          Get answers to common questions about working with us
-        </p>
-      </motion.div>
-
-      <div className="space-y-3 md:space-y-5">
-        {faqs.map((faq, index) => (
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
-            key={index}
-            variants={cardVariants}
-            whileHover={{ y: -2 }}
-            className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-blue-300 transition-all duration-300 bg-white"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isFaqInView ? "visible" : "hidden"}
+            className="max-w-4xl mx-auto"
           >
-            <button
-              className="w-full text-left p-4 md:p-5 flex justify-between items-center transition-colors duration-200 hover:bg-blue-50"
-              onClick={() => toggleFaq(index)}
-            >
-              <h3 className="font-semibold text-blue-800 text-sm md:text-lg pr-4">
-                {faq.question}
-              </h3>
-              <motion.svg
-                animate={{ rotate: openFaq === index ? 180 : 0 }}
-                className="w-4 h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </motion.svg>
-            </button>
-            
             <motion.div
-              initial={false}
-              animate={{ 
-                height: openFaq === index ? "auto" : 0,
-                opacity: openFaq === index ? 1 : 0
-              }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="overflow-hidden"
+              variants={itemVariants}
+              className="text-center mb-10 md:mb-14"
             >
-              <div className="px-4 md:px-5 pb-4 md:pb-5">
-                <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                  {faq.answer}
-                </p>
-              </div>
+              <h2 className="text-2xl md:text-4xl font-bold text-blue-800 mb-3 md:mb-4">
+                Frequently Asked Questions
+              </h2>
+              <div className="w-20 h-1 md:w-24 md:h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
+              <p className="text-sm sm:text-base md:text-xl text-gray-600 mt-4 md:mt-6 max-w-2xl mx-auto px-2 sm:px-4">
+                Get answers to common questions about working with us
+              </p>
             </motion.div>
+
+            <div className="space-y-3 md:space-y-5">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  variants={cardVariants}
+                  whileHover={{ y: -2 }}
+                  className="border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-blue-300 transition-all duration-300 bg-white"
+                >
+                  <button
+                    className="w-full text-left p-4 md:p-5 flex justify-between items-center transition-colors duration-200 hover:bg-blue-50"
+                    onClick={() => toggleFaq(index)}
+                  >
+                    <h3 className="font-semibold text-blue-800 text-sm md:text-lg pr-4">
+                      {faq.question}
+                    </h3>
+                    <motion.svg
+                      animate={{ rotate: openFaq === index ? 180 : 0 }}
+                      className="w-4 h-4 md:w-5 md:h-5 text-blue-600 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </motion.svg>
+                  </button>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openFaq === index ? "auto" : 0,
+                      opacity: openFaq === index ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 md:px-5 pb-4 md:pb-5">
+                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  </div>
-</section>
+        </div>
+      </section>
     </div>
   );
 };

@@ -101,10 +101,11 @@ const ServicePopup = ({ service, isOpen, onClose }) => {
         {/* Footer */}
         <div className="p-6 border-t bg-gray-50 rounded-b-2xl">
           <div className="flex flex-col sm:flex-row gap-3">
+            <Link to='/contact'>
             <button className="flex-1 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition shadow-sm">
               <i className="fas fa-calendar-check mr-2" />
               Schedule This Service
-            </button>
+            </button></Link>
             <button 
               onClick={onClose}
               className="flex-1 px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border border-gray-300 hover:bg-gray-50 transition"
